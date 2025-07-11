@@ -1,69 +1,152 @@
-# React + TypeScript + Vite
+# 🧠 NLW Agents
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto full stack desenvolvido durante o evento **Next Level Week (NLW)** da Rocketseat.  
+O sistema permite interagir com uma **IA de sugestão de mensagens**, com um backend rápido usando **Fastify** e **PostgreSQL + pgvector**, e um frontend moderno feito em **React + Vite + Tailwind**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📦 Repositórios
 
-## Expanding the ESLint configuration
+- 🔗 Backend: [NLW-Agents-Server](https://github.com/IgorBern02/NLW-Agents-Server)
+- 🌐 Frontend: [NLW-Agents-Web](https://github.com/IgorBern02/NLW-Agents-Web)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📷 Preview
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+![Preview NLW Agents](https://via.placeholder.com/1000x500?text=Insira+um+print+do+projeto+rodando+aqui)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+> Você pode substituir essa imagem por um print real da aplicação.
+
+---
+
+## 🚀 Tecnologias usadas
+
+### Backend
+
+- Node.js + Fastify
+- Zod para validação
+- Drizzle ORM
+- PostgreSQL com pgvector
+- Docker (para banco)
+- TypeScript
+
+### Frontend
+
+- React com Vite
+- Tailwind CSS
+- ShadCN UI
+- Lucide Icons
+- Axios
+- Zustand
+- Zod
+
+---
+
+## 🛠️ Como rodar o projeto localmente
+
+### 🔧 1. Clone os repositórios
+
+```bash
+git clone https://github.com/IgorBern02/NLW-Agents-Server.git
+git clone https://github.com/IgorBern02/NLW-Agents-Web.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🧠 Backend (NLW-Agents-Server)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Acesse a pasta do backend:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd NLW-Agents-Server
 ```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Crie o arquivo .env:
+
+```bash
+# .env
+PORT=3333
+DATABASE_URL=postgres://docker:docker@localhost:5432/agents
+```
+
+Inicie o banco com Docker:
+
+```bash
+docker compose up -d
+```
+
+Rode as migrations:
+
+```bash
+npx drizzle-kit migrate
+```
+
+Inicie o servidor:
+
+```bash
+npm run dev
+```
+
+Servidor disponível em: http://localhost:3333
+
+🌐 Frontend (NLW-Agents-Web)
+
+Acesse a pasta do frontend:
+
+```bash
+cd ../NLW-Agents-Web
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Crie o .env apontando para o backend:
+
+```bash
+# .env
+VITE_API_URL=http://localhost:3333
+```
+
+Inicie o projeto:
+
+```bash
+npm run dev
+```
+
+Aplicação acessível em: http://localhost:5173
+
+🗂 Estrutura das pastas
+
+### Backend
+
+NLW-Agents-Server/
+├── src/
+│ ├── http/routes/
+│ ├── lib/
+│ └── env.ts
+├── docker/
+├── drizzle/
+└── .env, package.json, tsconfig.json
+
+### Frontend
+
+NLW-Agents-Web/
+├── src/
+│ ├── components/
+│ ├── lib/
+│ ├── pages/
+│ ├── stores/
+│ └── main.tsx
+├── public/
+└── .env, vite.config.ts, package.json
+
+✍️ Autor
+Feito por @IgorBern02 no evento NLW da Rocketseat.
