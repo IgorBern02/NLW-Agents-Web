@@ -19,7 +19,7 @@ import {
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-import { useCreateaRoom } from "@/http/use-create-room";
+import { useCreateRoom } from "@/http/use-create-room";
 
 const createRoomSchema = z.object({
   name: z.string().min(3, { message: "Inclua no mínimo 3 caracteres" }),
@@ -29,7 +29,7 @@ const createRoomSchema = z.object({
 type CreateRoomFormData = z.infer<typeof createRoomSchema>;
 
 export function CreateRoomForm() {
-  const { mutateAsync: createRoom } = useCreateaRoom();
+  const { mutateAsync: createRoom } = useCreateRoom();
 
   const createRoomForm = useForm<CreateRoomFormData>({
     resolver: zodResolver(createRoomSchema),
