@@ -84,7 +84,7 @@ export function CreateRoomForm() {
               render={({ field }) => {
                 return (
                   <FormItem>
-                    <FormLabel>Nome da sala</FormLabel>
+                    <FormLabel>Descrição</FormLabel>
                     <FormControl>
                       <Textarea {...field} />
                     </FormControl>
